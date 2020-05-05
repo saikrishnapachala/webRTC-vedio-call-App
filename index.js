@@ -4,14 +4,15 @@ var os = require("os");
 var nodeStatic = require("node-static");
 var http = require("http");
 var socketIO = require("socket.io");
+var PORT = process.env.PORT || 3000;
 
 var fileServer = new nodeStatic.Server();
 var app = http
   .createServer(function(req, res) {
     fileServer.serve(req, res);
   })
-  .listen(8080, function() {
-    console.log("Sever started on port : 8080");
+  .listen(PORT, function() {
+    console.log("Sever started");
   });
 
 var io = socketIO.listen(app);
