@@ -1,4 +1,3 @@
-
 var pc;
 var localStream;
 var remoteStream;
@@ -30,7 +29,7 @@ function createPeerConnection() {
         label: event.candidate.sdpMLineIndex,
         id: event.candidate.sdpMid,
         candidate: event.candidate.candidate,
-        username: event.candidate.username,
+        username
       });
       console.log("sending ice data to  " + username);
     } else {
