@@ -29,7 +29,7 @@ function createPeerConnection() {
         label: event.candidate.sdpMLineIndex,
         id: event.candidate.sdpMid,
         candidate: event.candidate.candidate,
-        username
+        username: event.candidate.username,
       });
       console.log("sending ice data to  " + username);
     } else {
@@ -109,7 +109,7 @@ callBtn.addEventListener("click", e => {
   peerConnection.createOffer(
     description => {
       peerConnection.setLocalDescription(description);
-      socket.emit("call", { description, description.username });
+      socket.emit("call", { description, username });
     },
     err => console.error(err),
     sdpConstraints
