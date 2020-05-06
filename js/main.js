@@ -106,9 +106,9 @@ callBtn.addEventListener("click", e => {
   createPeerConnection();
   username = prompt("Who to call?");
   peerConnection.addStream(localStream);
-  username=data.username
   peerConnection.createOffer(
     description => {
+      username=data.username
       peerConnection.setLocalDescription(description);
       socket.emit("call", { description, username });
     },
