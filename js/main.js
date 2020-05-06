@@ -106,10 +106,11 @@ callBtn.addEventListener("click", e => {
   createPeerConnection();
   username = prompt("Who to call?");
   peerConnection.addStream(localStream);
+  username=data.username
   peerConnection.createOffer(
     description => {
       peerConnection.setLocalDescription(description);
-      socket.emit("call", { description, data.username });
+      socket.emit("call", { description, username });
     },
     err => console.error(err),
     sdpConstraints
