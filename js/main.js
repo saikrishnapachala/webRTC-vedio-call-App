@@ -109,7 +109,8 @@ callBtn.addEventListener("click", e => {
   peerConnection.createOffer(
     description => {
       peerConnection.setLocalDescription(description);
-      socket.emit("call", { description, data.username });
+      username: data.username
+      socket.emit("call", { description, username });
     },
     err => console.error(err),
     sdpConstraints
