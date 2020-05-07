@@ -6,7 +6,7 @@ var localVideo = document.querySelector("#localVideo");
 var remoteVideo = document.querySelector("#remoteVideo");
 var callBtn = document.getElementById("btnCall");
 var username;
-var config: {
+var config={
 
         iceServers: [
                 {
