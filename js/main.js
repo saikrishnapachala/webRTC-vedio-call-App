@@ -7,7 +7,6 @@ var remoteVideo = document.querySelector("#remoteVideo");
 var callBtn = document.getElementById("btnCall");
 var username;
 var params = {
-    initiator: initiator,
     trickle: false,
     reconnectTimer: 100,
     iceTransportPolicy: 'relay',
