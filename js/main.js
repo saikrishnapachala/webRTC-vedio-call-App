@@ -20,7 +20,12 @@ var pcConfig = {
 };
 
 function createPeerConnection() {
-  peerConnection = new RTCPeerConnection(pcConfig);
+  peerConnection = new RTCPeerConnection(initiator: true,
+      stream: this.videoStream,
+      reconnectTimer: 100,
+      iceTransportPolicy: 'relay',
+      trickle: false,
+      pcConfig);
   peerConnection.onicecandidate = function(event) {
     if (event.candidate) {
       // send local ICE node to remote
