@@ -29,7 +29,8 @@ function createPeerConnection() {
         label: event.candidate.sdpMLineIndex,
         id: event.candidate.sdpMid,
         candidate: event.candidate.candidate,
-        username
+        username,
+        pcConfig
       });
       console.log("sending ice data to  " + username);
     } else {
@@ -74,7 +75,8 @@ socket.on("incomingCall", data => {
 socket.on("remoteICECandidate", message => {
   var candidate = new RTCIceCandidate({
     sdpMLineIndex: message.label,
-    candidate: message.candidate
+    candidate: message.candidate,
+    pcConfig
   });
   peerConnection.addIceCandidate(candidate);
   console.log("remoteIceData", message);
