@@ -6,27 +6,22 @@ var localVideo = document.querySelector("#localVideo");
 var remoteVideo = document.querySelector("#remoteVideo");
 var callBtn = document.getElementById("btnCall");
 var username;
-var params = {
-    trickle: false,
-    reconnectTimer: 100,
-    iceTransportPolicy: 'relay',
-    config: {
+var config: {
 
         iceServers: [
-    {
-     "url": "stun:stun.immusservices.com:5349"
-    },
-    {
-      'url': 'turn:turn.immusservices.com:5349',
-        'credential': '123456',
-        'username': 'shiva'
-    }
-  ]
-    }
-};
+                {
+                 "url": "stun:stun.immusservices.com:5349"
+                },
+                {
+                  'url': 'turn:turn.immusservices.com:5349',
+                    'credential': '123456',
+                    'username': 'shiva'
+                }
+        ]
+    };
 
 function createPeerConnection() {
-  peerConnection = new RTCPeerConnection(params);
+  peerConnection = new RTCPeerConnection(config);
   peerConnection.onicecandidate = function(event) {
     if (event.candidate) {
       // send local ICE node to remote
