@@ -6,8 +6,14 @@ var localVideo = document.querySelector("#localVideo");
 var remoteVideo = document.querySelector("#remoteVideo");
 var callBtn = document.getElementById("btnCall");
 var username;
-var pcConfig = {
-  iceServers: [
+var params = {
+    initiator: initiator,
+    trickle: false,
+    reconnectTimer: 100,
+    iceTransportPolicy: 'relay',
+    config: {
+
+        iceServers: [
     {
      "url": "stun:stun.immusservices.com:5349"
     },
@@ -17,15 +23,11 @@ var pcConfig = {
         'username': 'shiva'
     }
   ]
+    }
 };
 
 function createPeerConnection() {
-  peerConnection = new RTCPeerConnection(initiator: true,
-      stream: this.videoStream,
-      reconnectTimer: 100,
-      iceTransportPolicy: 'relay',
-      trickle: false,
-      pcConfig);
+  peerConnection = new RTCPeerConnection(params);
   peerConnection.onicecandidate = function(event) {
     if (event.candidate) {
       // send local ICE node to remote
